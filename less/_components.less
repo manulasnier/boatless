@@ -42,7 +42,7 @@
 } // .btn
 
 // BTN COLOR
-.btn-color(@colorbg: #ddd, @colortxt: #fff, @color-variant: #eee) {
+.btn-style(@colorbg: #ddd, @colortxt: #fff, @color-variant: #eee) {
     border-color: @colorbg;
     background-color: @colorbg;
     color: @colortxt;
@@ -94,7 +94,7 @@
     }
 }
 
-.btn-color-invert(@colorbg: #666, @colortxt: #fff) {
+.btn-style-invert(@colorbg: #666, @colortxt: #fff) {
     color: @colorbg;
     border-color: @colorbg;
     background-color: transparent;
@@ -112,14 +112,29 @@
     }
 }
 
-.btn-gradient(@cstart: #eee, @center: #333, @cend: #000, @ctxt: #fff) {
+.btn-style-gradient(@cstart: #eee, @center: #333, @cend: #000, @ctxt: #fff, @dir: 90deg) {
     color: @ctxt;
-    background: linear-gradient(90deg, @cstart, @center 50%, @cend) ~"var(--x, 0) / 150%";
+    background: linear-gradient(@dir, @cstart, @center 50%, @cend) ~"var(--x, 0) / 150%";
 
     &:hover {
         --x: 100%;
     }
 }
+
+// COLOR
+// Fonction pour convertir un pourcentage d'opacité (0-100) en hexa (00-FF)
+.alpha-to-hex(@opacity) {
+  @alpha-int: round(@opacity * 2.55); // 0-100 → 0-255
+  @alpha-hex: format("%02x", @alpha-int); // Convertir en hexa
+  @{alpha-hex};
+}
+
+// Fonction pour ajouter l'alpha à une couleur hexa type #ffffff00
+.alpha(@color, @opacity) {
+  @alpha: .alpha-to-hex(@opacity);
+  @{color}@{alpha};
+}
+
 
 // TRIANGLE GENERATOR
 .triangle-base() {
