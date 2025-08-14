@@ -22,8 +22,9 @@ each(range(10, 100, 5), {
     visibility: hidden !important;
 }
 
-.spacing(@val-h : 100px, @val-w: 0) {
-    padding: @val-h @val-w;
+.spacing-v(@val : 100px) {
+    padding-top: @val;
+    padding-bottom: @val;
 }
 
 .sr-only {

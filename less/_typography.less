@@ -1,5 +1,6 @@
 // TYPOGRAPHY
 
+// TOOLS
 .tt-upper {
     text-transform: uppercase !important;
 }
@@ -22,4 +23,14 @@
 
 .tar {
     text-align: right !important;
+}
+
+// HEADINGS
+.font(@ff: sans-serif, @fz: 4.4rem, @fw: 700, @tt: uppercase, @lh: 1.1, @mb: 0.5em) {
+    font-family: @ff;
+    font-size: @fz;
+    font-weight: @fw;
+    line-height: @lh;
+    text-transform: @tt;
+    margin-bottom: @mb;
 }

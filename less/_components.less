@@ -1,21 +1,27 @@
 // COMPONENTS
 
 // BTN
-.btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 2px, @fz: 1.6rem, @textransform: uppercase, @fz-picto: 2rem, @margin-picto: 15px) {
+.btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 2px, @fz: 1.6rem, @fw: 700, @tt: uppercase, @fz-picto: 2rem, @margin-picto: 15px) {
     margin: auto;
     font-size: @fz;
-    text-transform: textransform;
+    font-weight: @fw;
+    text-transform: @tt;
     padding: 0 @padding;
     min-height: @height;
     height: @height;
     text-align: center;
     border: @border solid transparent;
+    cursor: pointer;
     .flex-i(row,center,center);
     .rounded(@rounded);
     .transition();
 
     @media print {
         display: none;
+    }
+
+    &.nohov {
+        cursor: initial;
     }
 
     i {
@@ -42,7 +48,7 @@
     }
 } // .btn
 
-// BTN COLOR
+// BTN STYLE
 .btn-style(@colorbg: #ddd, @colortxt: #fff, @color-variant: #eee) {
     border-color: @colorbg;
     background-color: @colorbg;
@@ -57,13 +63,13 @@
         }
     }
 
-    &.actif {
+    &.active {
         background-color: transparent;
         color: @colorbg;
     }
 
-    &.hover-variant {
-        // hover filaire avec couleur du texte
+    &.hover-txt {
+        // hover keeping text color
         &:not(.nohov):hover {
             @media (hover: hover) and (pointer: fine) {
                 color: @colortxt;
@@ -71,14 +77,14 @@
             }
         }
 
-        &.actif {
+        &.active {
             color: @colortxt;
             border-color: @colortxt;
         }
     }
 
-    &.hover-color {
-        // hover avec seconde couleur
+    &.hover-variant {
+        // hover variant color
         &:not(.nohov):hover {
             @media (hover: hover) and (pointer: fine) {
                 background-color: @color-variant;
@@ -87,10 +93,26 @@
             }
         }
 
-        &.actif {
+        &.active {
             background-color: @color-variant;
             border-color: @color-variant;
             color: @colortxt;
+        }
+    }
+
+    &.invert {
+        .btn-style-invert(@colorbg, @colortxt);
+    }
+
+    &.no-border {
+        .btn-style-invert(@colorbg, @colortxt);
+
+        border-color: transparent;
+
+        &:not(.nohov):hover {
+            @media (hover: hover) and (pointer: fine) {
+                border-color: @colorbg;
+            }
         }
     }
 }
@@ -107,7 +129,7 @@
         }
     }
 
-    &.actif {
+    &.active {
         color: @colortxt;
         background-color: @colorbg;
     }
