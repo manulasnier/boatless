@@ -122,21 +122,6 @@
     }
 }
 
-// COLOR
-// Fonction pour convertir un pourcentage d'opacité (0-100) en hexa (00-FF)
-.alpha-to-hex(@opacity) {
-  @alpha-int: round(@opacity * 2.55); // 0-100 → 0-255
-  @alpha-hex: format("%02x", @alpha-int); // Convertir en hexa
-  @{alpha-hex};
-}
-
-// Fonction pour ajouter l'alpha à une couleur hexa type #ffffff00
-.alpha(@color, @opacity) {
-  @alpha: .alpha-to-hex(@opacity);
-  @{color}@{alpha};
-}
-
-
 // TRIANGLE GENERATOR
 .triangle-base() {
     content: '';
