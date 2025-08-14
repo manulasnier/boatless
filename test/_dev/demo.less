@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+@import '../../startr.less';
+@import "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css";
+
+@color: #464d5d;
+@color2: #b88d74;
+@font: Nunito, sans-serif;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #fff;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.4;
+    font-family: @font;
+    color: #333;
+}
+
+// LAYOUT
+.wrap {
+    .layout(1440px,2em);
+}
+
+.spacer {
+    .spacing-v();
+}
+
+// BUTTONS
+.btn {
+    .btn-base(48px,20px,24px,2px,1.6rem,900,none,1.9rem,15px);
+}
+
+.btn-color {
+    .btn-style(@color, #fff, @color2);
+}
+
+.btn-color2 {
+    .btn-style(@color2, #fff, @color);
+}
+
+.btn-white {
+    .btn-style(#fff, @color, tint(@color2,40%));
+}
+
+// HEADINGS
+.h1 {
+    .font(@font,4.2rem,300,none,1.1,30px);
+}
+
+.h2 {
+    .font(@font,3.2rem,400,none,1.1,24px);
+}
+
+.h3 {
+    .font(@font,2.2rem,900,none,1.1,20px);
+}
+
+.h4 {
+    .font(@font,2.2rem,700,none,1.1,20px);
+}
+
+.h5 {
+    .font(@font,1.8rem,700,uppercase,1.1,10px);
+}
+
+.gcols {
+    margin-bottom: 30px;
+    grid-gap: 30px;
+}
+
+// DEMO PAGE
+.nav-btn {
+    padding: 20px;
+    margin-bottom: 25px;
+
+    &.color {
+        background-color: fadeout(@color,70%);
+    }
+
+    &.color2 {
+        background-color: fadeout(@color2,50%);
+    }
+
+    &.dark {
+        background-color: @color2;
+    }
+
+    .btn {
+        margin: 0 5px 10px;
+    }
+}
+
+.layout-bloc {
+    min-height: 200px;
+    background-color: @color;
+}

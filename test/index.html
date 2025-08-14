@@ -1,11 +1,78 @@
 <html>
     <head>
-        <title>Test Startrless</title>
-    </head>
-    <body class="main">
-        <h1>Test Startrless</h1>
-        <div class="gcols col2">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width">
 
-        </div>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+        <title>Startrless demo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="dist/demo.css">
+    </head>
+    <body class="demo">
+        <header><h1 class="h1">Démo startr.less</h1></header>
+        <main class="wrap spacer">
+            <section class="layout-model mb30">
+                <h2 class="h2">layout 4 colonnes</h2>
+                <ul class="gcols col4 col2-desktop col1-laptop">
+                    <li class="layout-bloc"></li>
+                    <li class="layout-bloc"></li>
+                    <li class="layout-bloc"></li>
+                    <li class="layout-bloc"></li>
+                </ul>
+
+                <ul class="gcols col4 span1-3 col1-laptop">
+                    <li class="layout-bloc"></li>
+                    <li class="layout-bloc"></li>
+                </ul>
+            </section>
+            <div class="gcols col2 col1-laptop">
+                <article>
+                    <h2 class="h2">Typographie</h2>
+                    <p class="h1">Titre niveau 1</p>
+                    <p class="h2">Titre niveau 2</p>
+                    <p class="h3">Titre niveau 3</p>
+                    <p class="h4">Titre niveau 4</p>
+                    <p class="h5">Titre niveau 5</p>
+                    <p class="text">texte de base</p>
+                </article>
+                <article>
+                    <h2 class="h2">Boutons</h2>
+                    <h3 class="h3">Boutons avec différents hover</h3>
+                    <nav class="nav-btn color2">
+                        <button class="btn btn-color"><span>Bouton</span></button>
+                        <button class="btn btn-color invert"><span>Bouton invert</span></button>
+                        <button class="btn btn-color no-border"><span>Bouton no-border</span></button>
+                        <button class="btn btn-color hover-txt"><span>Bouton hover-txt</span></button>
+                        <button class="btn btn-color hover-variant"><span>Bouton hover-variant</span></button>
+                        <button class="btn btn-color nohov"><span>Bouton nohov</span></button>
+                    </nav>
+                    <nav class="nav-btn color">
+                        <button class="btn btn-color2"><span>Bouton</span></button>
+                        <button class="btn btn-color2 invert"><span>Bouton invert</span></button>
+                        <button class="btn btn-color2 no-border"><span>Bouton no-border</span></button>
+                        <button class="btn btn-color2 hover-txt"><span>Bouton hover-txt</span></button>
+                        <button class="btn btn-color2 hover-variant"><span>Bouton hover-variant</span></button>
+                        <button class="btn btn-color2 nohov"><span>Bouton nohov</span></button>
+                    </nav>
+                    <nav class="nav-btn dark">
+                        <button class="btn btn-white"><span>Bouton</span></button>
+                        <button class="btn btn-white invert"><span>Bouton invert</span></button>
+                        <button class="btn btn-white no-border"><span>Bouton no-border</span></button>
+                        <button class="btn btn-white hover-txt"><span>Bouton hover-txt</span></button>
+                        <button class="btn btn-white hover-variant"><span>Bouton hover-variant</span></button>
+                        <button class="btn btn-white nohov"><span>Bouton nohov</span></button>
+                    </nav>
+
+                    <h3 class="h3">Boutons avec pictos</h3>
+                    <button class="btn btn-color picto-left"><i class="fa fa-user fas"></i><span>Bouton picto-left</span></button>
+                    <button class="btn btn-color picto-right"><span>Bouton picto-right</span><i class="fa fa-user fas"></i></button>
+                    <button class="btn btn-color only-picto"><i class="fa fa-user fas"></i></button>
+                </article>
+            </div>
+        </main>
     </body>
 </html>

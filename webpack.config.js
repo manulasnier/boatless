@@ -21,6 +21,10 @@ let config = {
     entry: {
         startrless: [
             './startr.less'
+        ],
+
+        demo : [
+            './test/_dev/demo.less'
         ]
     },
 
