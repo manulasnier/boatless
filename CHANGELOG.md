@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
+## [0.0.5] - 2025-08-28
+
+### Added
+- Add demo file in progress, to see mixins in action
+
+### Changed
+- Rename project to boatless, more funny name
+- Improve mixins less
+
 ## [0.0.4] - 2025-06-18
 
 ### Changed
