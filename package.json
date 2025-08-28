@@ -35,7 +35,7 @@
         "stylelint-webpack-plugin": "latest",
         "webpack": "latest",
         "webpack-cli": "latest",
-        "webpack-remove-empty-scripts": "^1.1.1"
+        "webpack-remove-empty-scripts": "latest"
     },
     "scripts": {
         "dev": "NODE_ENV=development webpack --progress --color",
