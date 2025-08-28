@@ -1,4 +1,4 @@
-# startrless
+# boatless
 Less starter tools for integrators
 
 useful classes and mixins to start a new webproject using less-css
@@ -7,12 +7,12 @@ useful classes and mixins to start a new webproject using less-css
 
 Install from npm
 
-    npm install startrless --save-dev
+    npm install boatless --save-dev
 
 Use it by importing on the top on your LESS file
 
-    @import "~startrless";
+    @import "~boatless";
 
 ## Documentation
 
-Get examples and full documentation here : [startrless.manulasnier.com](https://startrless.manulasnier.com/)
+Get examples and full documentation here : [boatless.manulasnier.com](https://boatless.manulasnier.com/)

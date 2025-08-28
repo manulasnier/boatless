@@ -1,23 +1,23 @@
 {
-    "name": "startrless",
+    "name": "boatless",
     "description": "LESS starter tools for websites builders",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/manulasnier/startrless.git"
+        "url": "git+https://github.com/manulasnier/boatless.git"
     },
     "keywords": [
         "less-css",
         "less tools",
         "css"
     ],
-    "main": "startr.less",
+    "main": "boat.less",
     "author": "Manu Lasnier <[manu@manulasnier.com](mailto:manu@manulasnier.com)>",
     "license": "GPL-3.0-only",
     "bugs": {
-        "url": "https://github.com/manulasnier/startrless/issues"
+        "url": "https://github.com/manulasnier/boatless/issues"
     },
-    "homepage": "https://startrless.manulasnier.com",
+    "homepage": "https://boatless.manulasnier.com",
     "devDependencies": {
         "autoprefixer": "latest",
         "clean-webpack-plugin": "latest",
