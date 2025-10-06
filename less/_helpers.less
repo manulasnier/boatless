@@ -15,6 +15,12 @@ each(range(10, 100, 5), {
                 display: none !important;
             }
         }
+
+        &.display-@{value} {
+            @media @@value {
+                display: block !important;
+            }
+        }
     });
 }
 
