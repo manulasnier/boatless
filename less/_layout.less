@@ -1,31 +1,35 @@
 // LAYOUT MIXINS
-.flex(@fd: row, @align: center, @js: space-between) {
+.flex(@fd: row, @align: center, @js: space-between, @gap: 2em) {
     display: flex;
     flex-direction: @fd;
     align-items: @align;
     justify-content: @js;
+    gap: @gap;
 }
 
-.flex-i(@fd: row, @align: center, @js: space-between) {
+.flex-i(@fd: row, @align: center, @js: space-between, @gap: 2em) {
     display: inline-flex;
     flex-direction: @fd;
     align-items: @align;
     justify-content: @js;
+    gap: @gap;
 }
 
 // FLEX SHORT
-.flex-center(@direction: row) {
+.flex-center(@direction: row, @gap: 2em) {
     display: flex;
     flex-direction: @direction;
     align-items: center;
     justify-content: center;
+    gap: @gap;
 }
 
-.flex-stretch(@direction: row) {
+.flex-stretch(@direction: row, @gap: 2em) {
     display: flex;
     flex-direction: @direction;
     align-items: stretch;
     justify-content: space-between;
+    gap: @gap;
 }
 
 // GRID SYSTEM
@@ -33,7 +37,7 @@
     display: grid;
     grid-auto-rows: @row;
     grid-template-columns: @col;
-    grid-gap: @gap;
+    gap: @gap;
 }
 
 /// Column
