@@ -1,7 +1,7 @@
 {
     "name": "boatless",
     "description": "LESS starter tools for websites builders",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/manulasnier/boatless.git"
