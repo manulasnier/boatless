@@ -1,7 +1,7 @@
 // COMPONENTS
 
 // BTN
-.btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 2px, @fz: 1.6rem, @fw: 700, @tt: uppercase, @fz-picto: 2rem, @margin-picto: 15px) {
+.btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 2px, @fz: 1.6rem, @fw: 700, @tt: uppercase, @fz-picto: 2rem, @margin: 15px) {
     margin: auto;
     font-size: @fz;
     font-weight: @fw;
@@ -12,7 +12,7 @@
     text-align: center;
     border: @border solid transparent;
     cursor: pointer;
-    .flex-i(row,center,center);
+    .flex-i(row,center,center,@margin);
     .rounded(@rounded);
     .transition();
 
@@ -28,22 +28,13 @@
         font-size: @fz-picto;
     }
 
-    &.picto-right {
-        i {
-            margin-left: @margin-picto;
-        }
-    }
-
-    &.picto-left {
-        i {
-            margin-right: @margin-picto;
-        }
-    }
-
     &.only-picto {
         max-width: @height;
         width: @height;
         padding: 0;
+    }
+
+    &.round {
         .rounded(50%);
     }
 } // .btn
