@@ -1,5 +1,5 @@
 // LAYOUT MIXINS
-.flex(@fd: row, @align: center, @js: space-between, @gap: 2em) {
+.flex(@fd: row, @align: center, @js: space-between, @gap: var(--gap)) {
     display: flex;
     flex-direction: @fd;
     align-items: @align;
@@ -7,7 +7,7 @@
     gap: @gap;
 }
 
-.flex-i(@fd: row, @align: center, @js: space-between, @gap: 2em) {
+.flex-i(@fd: row, @align: center, @js: space-between, @gap: var(--gap)) {
     display: inline-flex;
     flex-direction: @fd;
     align-items: @align;
@@ -16,7 +16,7 @@
 }
 
 // FLEX SHORT
-.flex-center(@direction: row, @gap: 2em) {
+.flex-center(@direction: row, @gap: var(--gap)) {
     display: flex;
     flex-direction: @direction;
     align-items: center;
@@ -24,7 +24,7 @@
     gap: @gap;
 }
 
-.flex-stretch(@direction: row, @gap: 2em) {
+.flex-stretch(@direction: row, @gap: var(--gap)) {
     display: flex;
     flex-direction: @direction;
     align-items: stretch;
@@ -33,7 +33,7 @@
 }
 
 // GRID SYSTEM
-.grid(@row: auto, @col: repeat(2, 1fr), @gap:20px) {
+.grid(@row: auto, @col: repeat(2, 1fr), @gap: var(--gap)) {
     display: grid;
     grid-auto-rows: @row;
     grid-template-columns: @col;
