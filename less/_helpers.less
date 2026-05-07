@@ -1,28 +1,89 @@
 // HELPERS
 
-each(range(10, 100, 5), {
+.generate-bp(@mb-value, @i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-query: @@bp-name;
+
+    .mb@{mb-value}-@{bp-name} {
+        @media @bp-query {
+            margin-bottom: (@mb-value * 1px) !important;
+        }
+    }
+
+    .generate-bp(@mb-value, @i + 1);
+}
+
+.generate-bp-container(@mb-value, @i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
+
+    .mb@{mb-value}-c-@{bp-name} {
+        @container (max-width: @bp-value) {
+            margin-bottom: (@mb-value * 1px) !important;
+        }
+    }
+
+    .generate-bp-container(@mb-value, @i + 1);
+}
+
+.generate-mb(@value) when (@value <= 100) {
     .mb@{value} {
         margin-bottom: (@value * 1px) !important;
     }
-});
+    .generate-bp(@value);
+    .generate-bp-container(@value);
+    .generate-mb(@value + 5);
+}
+
+.generate-mb(10);
+
+
+.generate-hide-bp(@i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-query: @@bp-name;
+
+    .hide-@{bp-name} {
+        @media @bp-query {
+            display: none !important;
+        }
+    }
+
+    .hide.display-@{bp-name} {
+        @media @bp-query {
+            display: block !important;
+        }
+    }
+
+    .generate-hide-bp(@i + 1);
+}
+
+.generate-hide-bp-container(@i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
+
+    .hide-c-@{bp-name} {
+        @container (max-width: @bp-value) {
+            display: none !important;
+        }
+    }
+
+    .hide.display-c-@{bp-name} {
+        @container (max-width: @bp-value) {
+            display: block !important;
+        }
+    }
+
+    .generate-hide-bp-container(@i + 1);
+}
 
 .hide {
     display: none !important;
-
-    each(@breakpoints, {
-        &-@{value} {
-            @media @@value {
-                display: none !important;
-            }
-        }
-
-        &.display-@{value} {
-            @media @@value {
-                display: block !important;
-            }
-        }
-    });
 }
+
+.generate-hide-bp();
+.generate-hide-bp-container();
 
 .hidden {
     visibility: hidden !important;

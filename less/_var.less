@@ -2,10 +2,19 @@
 
 @breakpoints: desktop-xxl,desktop-wide,desktop,laptop,tablet,mobile,xmobile;
 
-@desktop-xxl: ~'screen and (max-width: 1770px)';
-@desktop-wide: ~"screen and (max-width: 1449px)";
-@desktop: ~"screen and (max-width: 1199px)";
-@laptop: ~"screen and (max-width: 1023px)";
-@tablet: ~"screen and (max-width: 767px)";
-@mobile: ~"screen and (max-width: 639px)";
-@xmobile: ~"screen and (max-width: 479px)";
+// RESPONSIVE //
+@bp-desktop-xxl:  1770px;
+@bp-desktop-wide: 1499px;
+@bp-desktop:      1199px;
+@bp-laptop:       1023px;
+@bp-tablet:       767px;
+@bp-mobile:       639px;
+@bp-xmobile:      489px;
+
+@desktop-xxl:  ~"(max-width: @{bp-desktop-xxl})";
+@desktop-wide: ~"(max-width: @{bp-desktop-wide})";
+@desktop:      ~"(max-width: @{bp-desktop})";
+@laptop:       ~"(max-width: @{bp-laptop})";
+@tablet:       ~"(max-width: @{bp-tablet})";
+@mobile:       ~"(max-width: @{bp-mobile})";
+@xmobile:      ~"(max-width: @{bp-xmobile})";
