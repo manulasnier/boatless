@@ -3,7 +3,7 @@ name: Notify boatless-doc
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   dispatch:
