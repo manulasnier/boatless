@@ -1,6 +1,6 @@
 # Instructions Copilot — PW Starterkit
 
-Les instructions techniques complètes du projet sont dans **[.ai/INDEX.md](../.ai/INDEX.md)**.
+Les instructions techniques complètes du projet sont dans **CLAUDE.md**.
 Lis ce fichier en premier, puis les fichiers du domaine concerné par ta tâche.
 
 ---
