@@ -1,5 +1,7 @@
 /test/
 dist/
+
+# Build tooling — not needed by consumers
 .browserlistrc
 .editorconfig
 .nvmrc
@@ -7,3 +9,9 @@ dist/
 .stylelintignore
 postcss.config.js
 webpack.config.js
+
+# Contributor docs and editor wiring — not needed by consumers
+.github/
+.vscode/
+.gitmessage
+CLAUDE.md

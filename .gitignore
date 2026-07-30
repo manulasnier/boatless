@@ -1,7 +1,11 @@
 ._*
 .DS_Store
 .idea/
-.vscode/
 .claude/
+
+# Share the Copilot / Stylelint wiring, keep personal editor state out
+.vscode/*
+!.vscode/settings.json
+
 node_modules/
 dist/

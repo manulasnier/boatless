@@ -1,29 +1,31 @@
-# type(scope): description          <-- 72 car. max, minuscule, sans point final
+# type(scope): description        <-- 72 chars max, lowercase, no trailing period
 #
-# Corps : expliquer le POURQUOI, pas le comment. Wrap à 72 colonnes.
+# Body: explain WHY, not how. Wrap at 72 columns.
 #
 # ----------------------------------------------------------------------
-# Types autorisés :
-#   feat      nouvelle fonctionnalité
-#   fix       correction de bug
-#   refactor  refonte sans changement de comportement
-#   chore     tâches diverses (dépendances, config, nettoyage)
-#   docs      documentation uniquement
-#   style     mise en forme, CSS/LESS, indentation
-#   test      tests
-#   perf      performances
-#   ci        intégration continue
-#   build     webpack, npm, composer
-#   revert    annulation d'un commit précédent
+# Language: ENGLISH
 #
-# Scopes courants :
-#   security ux admin bo front less js php bdd mails upload
-#   i18n captcha sqldump routes doc
-#   (ou le nom du module/classe concerné — omettre si transversal)
+# Types:
+#   feat      new mixin, helper, component or public class
+#   fix       bug fix in the generated CSS or in the build
+#   refactor  restructuring with no change to the compiled CSS
+#   style     formatting or indentation only
+#   perf      smaller or faster output
+#   docs      README, CHANGELOG, CLAUDE.md, instruction files
+#   build     webpack, PostCSS, Stylelint config, npm dependencies
+#   ci        GitHub Actions workflows
+#   test      demo files under test/
+#   chore     housekeeping that fits nothing above
+#   revert    reverting a previous commit
 #
-# Rappels :
-#   - message en FRANÇAIS
-#   - un commit = un changement cohérent (ne pas mélanger feat et fix)
+# Scopes:
+#   vars mixins layout helpers components forms typography
+#   demo deps webpack
+#   (omit if the change is cross-cutting)
 #
-# Détail : .github/copilot-instructions.md
+# Reminders:
+#   - imperative mood: "add", not "added" or "adds"
+#   - one commit = one coherent change (do not mix feat and fix)
+#
+# Details: .github/instructions/commit-message.instructions.md
 # ----------------------------------------------------------------------

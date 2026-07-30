@@ -1,0 +1,44 @@
+{
+    // Copilot reads .github/copilot-instructions.md for CHAT requests only.
+    // Commit message generation ignores that file, so it must be pointed at
+    // the commit instructions explicitly — this is what makes the ✨ button
+    // in the Source Control panel follow the project convention.
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".github/instructions/commit-message.instructions.md"
+        },
+        {
+            "text": "Write the commit message in English, using Conventional Commits: type(scope): description. Lowercase type and description, imperative mood, no trailing period, 72 characters max on the subject line."
+        }
+    ],
+
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "file": ".github/instructions/commit-message.instructions.md"
+        }
+    ],
+
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "file": ".github/copilot-instructions.md"
+        }
+    ],
+
+    // test/dist is build output — guard against editing it by hand.
+    // package-lock.json is deliberately NOT locked here: you may still need to
+    // resolve a merge conflict in it.
+    "files.readonlyInclude": {
+        "test/dist/**": true
+    },
+    "search.exclude": {
+        "test/dist": true
+    },
+
+    "[less]": {
+        "editor.formatOnSave": false
+    },
+    "less.validate": false,
+    "stylelint.validate": [
+        "less"
+    ]
+}

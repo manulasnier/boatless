@@ -1,108 +1,103 @@
-# Instructions Copilot — PW Starterkit
+# Copilot instructions — boatless
 
-Les instructions techniques complètes du projet sont dans **CLAUDE.md**.
-Lis ce fichier en premier, puis les fichiers du domaine concerné par ta tâche.
+**boatless** is a standalone, open-source **LESS toolkit** published on npm: utility
+classes, mixins, a grid system and typography helpers for web integrators.
 
----
+There is **no PHP, no database, no jQuery and no application code** in this
+repository. The only JavaScript is build configuration (`webpack.config.js`,
+`postcss.config.js`), and it is not published to npm. Do not suggest framework,
+server-side or DOM code here.
 
-## Messages de commit
+Full project overview: [CLAUDE.md](../CLAUDE.md).
+Commit messages: [.github/instructions/commit-message.instructions.md](instructions/commit-message.instructions.md).
 
-**Toujours rédiger les messages de commit en français**, au format **Conventional Commits**.
+## Structure
 
-### Format
-
-```
-type(scope): description
-
-Corps optionnel expliquant le pourquoi du changement.
-```
-
-### Règles
-
-| Élément | Règle |
+| Path | Role |
 |---|---|
-| Langue | **français** — toujours |
-| Type | obligatoire, en minuscules |
-| Scope | optionnel, entre parenthèses, en minuscules |
-| Description | à l'impératif ou à l'infinitif, minuscule initiale, **sans point final** |
-| Longueur du sujet | 72 caractères maximum |
-| Corps | séparé du sujet par une ligne vide, explique **pourquoi**, pas **comment** |
+| `boat.less` | Single entry point, declared as `main` in `package.json` — imports every partial |
+| `less/_var.less` | LESS variables and CSS custom properties — breakpoints live here |
+| `less/_mixins.less` | Reusable mixins |
+| `less/_layout.less` | Layout, grid (`.gcols`), container queries |
+| `less/_components.less` | UI components |
+| `less/_typography.less` | Typography |
+| `less/_forms.less` | Form base styles |
+| `less/_helpers.less` | Utility classes (`.mb*`, `.hide*`) |
+| `test/` | Demo only — `index.html`, `_dev/demo.less`; excluded from the npm package |
+| `test/dist/` | **Generated output — never edit by hand** |
 
-### Types autorisés
+Import order in `boat.less` is significant: `_var` and `_mixins` must come first.
+Adding a partial means adding an `@import` there.
 
-| Type | Usage |
-|---|---|
-| `feat` | Nouvelle fonctionnalité |
-| `fix` | Correction de bug |
-| `refactor` | Refonte de code sans changement de comportement |
-| `chore` | Tâches diverses (dépendances, config, nettoyage) |
-| `docs` | Documentation uniquement |
-| `style` | Mise en forme, CSS/LESS, indentation — sans impact fonctionnel |
-| `test` | Ajout ou modification de tests |
-| `perf` | Amélioration des performances |
-| `ci` | Intégration continue |
-| `build` | Build, webpack, npm, composer |
-| `revert` | Annulation d'un commit précédent |
+## Hard rules
 
-Aucun autre type n'est autorisé.
+- **LESS only** — never SASS.
+- **Never edit** `test/dist/`, `node_modules/`, or `package-lock.json` by hand.
+- **Never hardcode a breakpoint value** — read it from `less/_var.less`.
+- 4 spaces, `lf` line endings, UTF-8, final newline (see `.editorconfig`).
+- Stylelint must pass — the build fails on error (`failOnError: true`).
 
-### Scopes courants dans ce projet
+## LESS conventions
 
-`security`, `ux`, `admin`, `bo`, `front`, `less`, `js`, `php`, `bdd`, `mails`, `upload`,
-`i18n`, `captcha`, `sqldump`, `routes`, `doc`
+- **Variables in `_var.less`**, never hardcoded values in other partials.
+- **Mixin calls go last** in a block, after every CSS property — they must win on
+  declaration order.
+- **Declaration order by force**: positioning/layout → box model → typography →
+  visual → animations → mixin calls.
+- **Nesting limited to 3 levels.** Beyond that, extract a component.
+- **One property per line.** Compact single-line at-rule bodies are tolerated in
+  the generated column/span mixins of `_layout.less` where they aid scanning;
+  nowhere else.
+- **CSS custom properties are preferred** for anything a consumer may want to
+  re-theme — the point is to let them override a variable rather than a rule.
+- `!important` is expected and correct in utility classes (`_helpers.less`, the
+  typography overrides) since they exist to win. Avoid it in `_components.less`
+  and `_forms.less`.
 
-Le scope reste libre : utiliser le nom du module, de la classe ou du fichier concerné
-(ex. `refactor(sendMailStock)`, `fix(sqldump)`). L'omettre si le changement est transversal.
+## Responsive
 
-### Exemples valides
+Two parallel systems, kept symmetrical — a media-query variant and a container-query
+variant for each helper:
 
-```
-feat: ajout de la protection CSRF sur les formulaires et actions
-fix(security): remplacer les redirections GET par des soumissions POST
-fix: corriger le chemin du répertoire de téléchargement
-refactor: simplifier la logique d'ajout des templates de mail
-chore: supprimer les fonctions de cryptage et décryptage obsolètes
-docs: mise à jour de la documentation sur les requêtes PDO
-style: ajuster le style de la popup pour les écrans mini-laptop
-```
+```less
+// media query variant
+@bp-px:    ~"bp-@{bp-name}";
+@bp-value: @@bp-px;
+@media (max-width: @bp-value) { … }
 
-Avec corps explicatif :
-
-```
-fix(security): déclencher l'événement submit jQuery pour injecter le jeton CSRF
-
-Le submit natif du DOM ne déclenche pas l'événement 'submit', donc le
-handler global de inc_footlinks.php n'injectait jamais le champ _csrf
-et l'enregistrement des traductions échouait en 403 (csrf_check).
-```
-
-### À éviter
-
-```
-update fichiers                      ← pas de type, pas en français structuré
-Fix: Corrige Le Bug.                 ← type capitalisé, description capitalisée, point final
-feat(Security): add CSRF protection  ← scope capitalisé, description en anglais
-divers                               ← non descriptif
+// container query variant
+@container (max-width: @bp-value) { … }
 ```
 
-### Commits multiples
+**Never write a bare variable in an at-rule prelude** (`@media @bp-query`): it is
+deprecated in less 4.8, and the documented `@media @{bp-query}` replacement is not
+parsed by `postcss-less` 6, which breaks Stylelint. Always build the condition from
+the `@bp-*` pixel values as shown above.
 
-Un commit = un changement cohérent. Ne pas mélanger un `feat` et un `fix` dans le
-même commit — les séparer.
+Use **prefix range notation** — `(max-width: 767px)`, never `(width <= 767px)`.
+This is enforced by `media-feature-range-notation: "prefix"` in `.stylelintrc`.
 
----
+## Build
 
-## Rappel des règles de code
+```bash
+npm run dev      # unminified, source maps, → test/dist/*.css
+npm run watch    # same, watching
+npm run build    # production: PostCSS + autoprefixer + cssnano → test/dist/*-min.css
+```
 
-Détail complet dans [.ai/INDEX.md](../.ai/INDEX.md) — en résumé :
+PostCSS only runs meaningfully on the production build. `output.clean` wipes
+`test/dist/` on every run, so dev and production outputs replace each other —
+rebuild in dev mode before opening `test/index.html`.
 
-- **PHP natif uniquement** — jamais de framework
-- **PDO uniquement** — requêtes préparées obligatoires
-- **jQuery uniquement** — jamais React, Vue, Angular ni Vanilla JS
-- **LESS uniquement** — jamais de SASS
-- `const` / `let` en JS — jamais `var`
-- Code et commentaires en **français**
-- Ne jamais éditer `dist/`, `vendor/`, `node_modules/`
-- Ne jamais toucher `admin/pweditor/` ni `admin/pwfiles/`
-- Dossiers préfixés `_` = dev **local** uniquement, jamais déployés
-- Indentation : 4 espaces, fins de ligne `lf`, UTF-8 (voir `.editorconfig`)
+Dependencies are pinned to **caret ranges**. Never reintroduce `"latest"`: it lets
+`package.json` and `package-lock.json` drift apart silently, which is what broke
+this build once already.
+
+## Definition of done for a style change
+
+1. `npm run dev` compiles with **no warnings and no Stylelint errors**.
+2. `npm run build` compiles clean too.
+3. If the change is meant to be a refactor, diff the compiled CSS against the
+   previous output and confirm it is unchanged.
+4. Public API changes (new class, renamed variable) are added to `CHANGELOG.md`
+   under the current version, following Keep a Changelog.
