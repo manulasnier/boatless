@@ -1,0 +1,29 @@
+# type(scope): description          <-- 72 car. max, minuscule, sans point final
+#
+# Corps : expliquer le POURQUOI, pas le comment. Wrap à 72 colonnes.
+#
+# ----------------------------------------------------------------------
+# Types autorisés :
+#   feat      nouvelle fonctionnalité
+#   fix       correction de bug
+#   refactor  refonte sans changement de comportement
+#   chore     tâches diverses (dépendances, config, nettoyage)
+#   docs      documentation uniquement
+#   style     mise en forme, CSS/LESS, indentation
+#   test      tests
+#   perf      performances
+#   ci        intégration continue
+#   build     webpack, npm, composer
+#   revert    annulation d'un commit précédent
+#
+# Scopes courants :
+#   security ux admin bo front less js php bdd mails upload
+#   i18n captcha sqldump routes doc
+#   (ou le nom du module/classe concerné — omettre si transversal)
+#
+# Rappels :
+#   - message en FRANÇAIS
+#   - un commit = un changement cohérent (ne pas mélanger feat et fix)
+#
+# Détail : .github/copilot-instructions.md
+# ----------------------------------------------------------------------
