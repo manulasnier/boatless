@@ -3,7 +3,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 // ENV
@@ -30,6 +29,7 @@ let config = {
 
     output: {
         path: path.resolve(__dirname, 'test/dist'),
+        clean: true,
         publicPath: '',
         filename: '[name].js',
         assetModuleFilename: '[name][ext][query]'
@@ -64,7 +64,6 @@ let config = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(),
         new RemoveEmptyScriptsPlugin(),
         new MiniCssExtractPlugin({
             filename: devMode ? '[name].css' : '[name]-min.css',

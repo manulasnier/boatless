@@ -2,10 +2,11 @@
 
 .generate-bp(@mb-value, @i: 1) when (@i <= length(@breakpoints)) {
     @bp-name: extract(@breakpoints, @i);
-    @bp-query: @@bp-name;
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
 
     .mb@{mb-value}-@{bp-name} {
-        @media @bp-query {
+        @media (max-width: @bp-value) {
             margin-bottom: (@mb-value * 1px) !important;
         }
     }
@@ -41,16 +42,17 @@
 
 .generate-hide-bp(@i: 1) when (@i <= length(@breakpoints)) {
     @bp-name: extract(@breakpoints, @i);
-    @bp-query: @@bp-name;
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
 
     .hide-@{bp-name} {
-        @media @bp-query {
+        @media (max-width: @bp-value) {
             display: none !important;
         }
     }
 
     .hide.display-@{bp-name} {
-        @media @bp-query {
+        @media (max-width: @bp-value) {
             display: block !important;
         }
     }

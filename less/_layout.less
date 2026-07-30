@@ -65,15 +65,16 @@
 // Mixin unique BP colonnes
 .generate-all-gcols-bp(@gcols-i: 1) when (@gcols-i <= length(@breakpoints)) {
     @gcols-all-bp-name: extract(@breakpoints, @gcols-i);
-    @gcols-all-bp-query: @@gcols-all-bp-name;
+    @gcols-all-bp-px: ~"bp-@{gcols-all-bp-name}";
+    @gcols-all-bp-value: @@gcols-all-bp-px;
 
     .gcols.col3-@{gcols-all-bp-name} {
-        @media @gcols-all-bp-query {
+        @media (max-width: @gcols-all-bp-value) {
             grid-template-columns: repeat(3, 1fr);
         }
     }
     .gcols.col2-@{gcols-all-bp-name} {
-        @media @gcols-all-bp-query {
+        @media (max-width: @gcols-all-bp-value) {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -104,10 +105,11 @@
 // Mixin unique col1 media queries
 .generate-all-gcols-col1-bp(@gcols-col1-i: 1) when (@gcols-col1-i <= length(@breakpoints)) {
     @gcols-all-col1-bp-name: extract(@breakpoints, @gcols-col1-i);
-    @gcols-all-col1-bp-query: @@gcols-all-col1-bp-name;
+    @gcols-all-col1-bp-px: ~"bp-@{gcols-all-col1-bp-name}";
+    @gcols-all-col1-bp-value: @@gcols-all-col1-bp-px;
 
     .gcols.col1-@{gcols-all-col1-bp-name} {
-        @media @gcols-all-col1-bp-query {
+        @media (max-width: @gcols-all-col1-bp-value) {
             grid-template-columns: 1fr;
 
             > * {
@@ -141,22 +143,23 @@
 // Mixin unique spans col4 media queries
 .generate-all-gcols-span-col4-bp(@gcols-span4-i: 1) when (@gcols-span4-i <= length(@breakpoints)) {
     @gcols-all-span4-bp-name: extract(@breakpoints, @gcols-span4-i);
-    @gcols-all-span4-bp-query: @@gcols-all-span4-bp-name;
+    @gcols-all-span4-bp-px: ~"bp-@{gcols-all-span4-bp-name}";
+    @gcols-all-span4-bp-value: @@gcols-all-span4-bp-px;
 
     .gcols.span1-3-@{gcols-all-span4-bp-name} > *:last-child {
-        @media @gcols-all-span4-bp-query { grid-column: span 3; }
+        @media (max-width: @gcols-all-span4-bp-value) { grid-column: span 3; }
     }
     .gcols.span3-1-@{gcols-all-span4-bp-name} > *:first-child {
-        @media @gcols-all-span4-bp-query { grid-column: span 3; }
+        @media (max-width: @gcols-all-span4-bp-value) { grid-column: span 3; }
     }
     .gcols.span2-1-1-@{gcols-all-span4-bp-name} > *:first-child {
-        @media @gcols-all-span4-bp-query { grid-column: span 2; }
+        @media (max-width: @gcols-all-span4-bp-value) { grid-column: span 2; }
     }
     .gcols.span1-1-2-@{gcols-all-span4-bp-name} > *:last-child {
-        @media @gcols-all-span4-bp-query { grid-column: span 2; }
+        @media (max-width: @gcols-all-span4-bp-value) { grid-column: span 2; }
     }
     .gcols.span1-2-1-@{gcols-all-span4-bp-name} > *:nth-child(2) {
-        @media @gcols-all-span4-bp-query { grid-column: span 2; }
+        @media (max-width: @gcols-all-span4-bp-value) { grid-column: span 2; }
     }
 
     .generate-all-gcols-span-col4-bp(@gcols-span4-i + 1);
@@ -165,13 +168,14 @@
 // Mixin unique spans col3 media queries
 .generate-all-gcols-span-col3-bp(@gcols-span3-i: 1) when (@gcols-span3-i <= length(@breakpoints)) {
     @gcols-all-span3-bp-name: extract(@breakpoints, @gcols-span3-i);
-    @gcols-all-span3-bp-query: @@gcols-all-span3-bp-name;
+    @gcols-all-span3-bp-px: ~"bp-@{gcols-all-span3-bp-name}";
+    @gcols-all-span3-bp-value: @@gcols-all-span3-bp-px;
 
     .gcols.span1-2-@{gcols-all-span3-bp-name} > *:last-child {
-        @media @gcols-all-span3-bp-query { grid-column: span 2; }
+        @media (max-width: @gcols-all-span3-bp-value) { grid-column: span 2; }
     }
     .gcols.span2-1-@{gcols-all-span3-bp-name} > *:first-child {
-        @media @gcols-all-span3-bp-query { grid-column: span 2; }
+        @media (max-width: @gcols-all-span3-bp-value) { grid-column: span 2; }
     }
 
     .generate-all-gcols-span-col3-bp(@gcols-span3-i + 1);
