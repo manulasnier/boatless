@@ -1,12 +1,14 @@
 // Webpack 5 Config
 
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
+import RemoveEmptyScriptsPlugin from 'webpack-remove-empty-scripts';
 
 // ENV
 const devMode = process.env.NODE_ENV !== 'production';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let config = {
     mode: devMode ? "development" : "production",
@@ -79,5 +81,4 @@ let config = {
     ].filter(Boolean)
 };
 
-module.exports = config;
-
+export default config;

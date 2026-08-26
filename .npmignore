@@ -8,7 +8,7 @@ dist/
 .stylelintrc
 .stylelintignore
 postcss.config.js
-webpack.config.js
+webpack.config.mjs
 
 # Contributor docs and editor wiring — not needed by consumers
 .github/

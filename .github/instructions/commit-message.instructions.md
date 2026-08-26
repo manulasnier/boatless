@@ -60,7 +60,7 @@ Prefer the LESS partial or config area actually touched:
 | `typography` | `less/_typography.less` |
 | `demo` | `test/index.html`, `test/_dev/demo.less` |
 | `deps` | `package.json`, `package-lock.json` |
-| `webpack` | `webpack.config.js`, `postcss.config.js`, `.stylelintrc` |
+| `webpack` | `webpack.config.mjs`, `postcss.config.js`, `.stylelintrc` |
 
 Omit the scope when the change is cross-cutting. Never invent a scope for a
 directory that does not exist in this repository.

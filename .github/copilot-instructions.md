@@ -4,7 +4,7 @@
 classes, mixins, a grid system and typography helpers for web integrators.
 
 There is **no PHP, no database, no jQuery and no application code** in this
-repository. The only JavaScript is build configuration (`webpack.config.js`,
+repository. The only JavaScript is build configuration (`webpack.config.mjs`,
 `postcss.config.js`), and it is not published to npm. Do not suggest framework,
 server-side or DOM code here.
 

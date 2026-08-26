@@ -46,7 +46,7 @@ It provides utility classes, mixins, a grid system, and typography helpers to ki
 │   ├── index.html             # Demo HTML file
 │   ├── _dev/demo.less         # Demo LESS source
 │   └── dist/                  # Compiled CSS output (boatless.css, demo.css)
-├── webpack.config.js          # Webpack configuration
+├── webpack.config.mjs         # Webpack configuration
 ├── postcss.config.js          # PostCSS configuration
 ├── package.json
 ├── CHANGELOG.md
