@@ -1,6 +1,41 @@
 // COMPONENTS
 
 // BTN
+
+// Generates .only-picto-<bp> variants (media queries)
+.generate-only-picto-bp(@size, @i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
+
+    &.only-picto-@{bp-name} {
+        @media (max-width: @bp-value) {
+            max-width: @size;
+            width: @size;
+            padding: 0;
+        }
+    }
+
+    .generate-only-picto-bp(@size, @i + 1);
+}
+
+// Generates .only-picto-c-<bp> variants (container queries)
+.generate-only-picto-bp-container(@size, @i: 1) when (@i <= length(@breakpoints)) {
+    @bp-name: extract(@breakpoints, @i);
+    @bp-px: ~"bp-@{bp-name}";
+    @bp-value: @@bp-px;
+
+    &.only-picto-c-@{bp-name} {
+        @container (max-width: @bp-value) {
+            max-width: @size;
+            width: @size;
+            padding: 0;
+        }
+    }
+
+    .generate-only-picto-bp-container(@size, @i + 1);
+}
+
 .btn-base(@height: 50px, @padding: 20px, @rounded: 25px, @border: 1px, @fz: 1.6rem, @fw: 700, @tt: uppercase, @fz-picto: 2rem, @gap: 15px) {
     font-size: @fz;
     font-weight: @fw;
@@ -32,6 +67,9 @@
         width: @height;
         padding: 0;
     }
+
+    .generate-only-picto-bp(@height);
+    .generate-only-picto-bp-container(@height);
 
     &.disabled,
     &:disabled {
