@@ -15,3 +15,4 @@ webpack.config.mjs
 .vscode/
 .gitmessage
 CLAUDE.md
+.claude/
