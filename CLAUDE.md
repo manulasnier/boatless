@@ -8,7 +8,7 @@ This file provides guidance to Claude AI when working with the **boatless** proj
 It provides utility classes, mixins, a grid system, and typography helpers to kickstart any web project using LESS-CSS.
 
 - **Author:** Manu Lasnier <manu@manulasnier.com>
-- **Version:** 0.0.7
+- **Version:** 0.0.8
 - **License:** GNU GPL v3.0
 - **Homepage:** https://boatless.manulasnier.com
 - **Repository:** https://github.com/manulasnier/boatless
@@ -114,6 +114,7 @@ This imports `boat.less` which in turn loads all partials from the `less/` direc
 
 | Version | Date | Highlights |
 |---------|------|-----------|
+| 0.0.8 | 2026-08-26 | `@touch` media variable, responsive `.only-picto`, webpack config in ESM |
 | 0.0.7 | 2026-05-07 | Grid mixin update, `@container` support, CSS vars, responsive `.hide`/`.mb` |
 | 0.0.6 | 2026-04-14 | `gap` param on flex mixin, removed color vars |
 | 0.0.5 | 2025-08-28 | Renamed to **boatless**, demo file added |

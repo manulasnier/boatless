@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.8] - 2026-08-26
+
+### Added
+- Add @touch media variable to target touch devices (hover: none / pointer: coarse)
+- Add responsive only-picto on btn-base, with media and container declinations
+
+### Changed
+- Switch webpack config to ESM (webpack.config.mjs)
+
 ## [0.0.7] - 2026-05-07
 
 ### Changed
