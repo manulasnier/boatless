@@ -12,6 +12,11 @@
         "css"
     ],
     "main": "boat.less",
+    "files": [
+        "boat.less",
+        "less/",
+        "CHANGELOG.md"
+    ],
     "author": "Manu Lasnier <[manu@manulasnier.com](mailto:manu@manulasnier.com)>",
     "license": "GPL-3.0-only",
     "bugs": {
@@ -36,8 +41,15 @@
         "webpack-remove-empty-scripts": "^1.1.1"
     },
     "scripts": {
-        "dev": "NODE_ENV=development webpack --progress --color",
-        "watch": "NODE_ENV=development webpack --progress --color --watch",
+        "dev": "webpack --progress --color",
+        "watch": "webpack --progress --color --watch",
         "build": "NODE_ENV=production webpack --progress --color"
+    },
+    "packageManager": "pnpm@12.10.1",
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "onFail": "error"
+        }
     }
 }

@@ -21,6 +21,7 @@ It provides utility classes, mixins, a grid system, and typography helpers to ki
 | Tool | Role |
 |------|------|
 | LESS CSS | Main stylesheet language |
+| pnpm | Package manager (repository only — consumers use any) |
 | Webpack | Bundler & compiler |
 | PostCSS | CSS post-processing |
 | Autoprefixer | CSS vendor prefixes |
@@ -48,24 +49,31 @@ It provides utility classes, mixins, a grid system, and typography helpers to ki
 │   └── dist/                  # Compiled CSS output (boatless.css, demo.css)
 ├── webpack.config.mjs         # Webpack configuration
 ├── postcss.config.js          # PostCSS configuration
-├── package.json
+├── package.json               # "files" whitelists what gets published
+├── pnpm-lock.yaml
 ├── CHANGELOG.md
 └── README.md
 ```
 
 ---
 
-## Available npm Scripts
+## Available Scripts
+
+The repository is managed with **pnpm** (npm is blocked by `devEngines`) — see
+`.github/copilot-instructions.md`, *Package manager*.
 
 ```bash
+# Install, at the versions of pnpm-lock.yaml
+pnpm i
+
 # Development build (unminified)
-npm run dev
+pnpm dev
 
 # Watch mode (auto-recompile on file change)
-npm run watch
+pnpm watch
 
 # Production build (minified, optimized)
-npm run build
+pnpm build
 ```
 
 ---

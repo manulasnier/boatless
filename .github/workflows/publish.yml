@@ -16,20 +16,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
 
+      # Version comes from packageManager in package.json
+      - uses: pnpm/action-setup@v4.1.0
+
       - uses: actions/setup-node@v4.4.0
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
 
       # Node 24 already bundles a recent npm, but trusted publishing needs
       # >= 11.5.1 to exchange the OIDC token, so pull it forward explicitly
       - name: Ensure npm supports trusted publishing
+        working-directory: ${{ runner.temp }}
         run: |
           npm install -g "npm@^11.5.1"
           npm --version
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       # A tag must describe the version it ships, otherwise the release is a lie
       - name: Check tag matches package.json
@@ -45,7 +50,14 @@ jobs:
 
       # Compiles the LESS and runs Stylelint, which fails the build on error
       - name: Build
-        run: npm run build
+        run: pnpm build
+
+      # pnpm packs the tarball, npm uploads it: npm owns the OIDC exchange
+      # behind trusted publishing, but devEngines refuses npm inside the
+      # project, so the upload runs from outside it
+      - name: Pack
+        run: pnpm pack --pack-destination "$RUNNER_TEMP"
 
       - name: Publish
-        run: npm publish
+        working-directory: ${{ runner.temp }}
+        run: npm publish ./boatless-*.tgz

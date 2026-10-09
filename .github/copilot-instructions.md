@@ -32,7 +32,7 @@ Adding a partial means adding an `@import` there.
 ## Hard rules
 
 - **LESS only** — never SASS.
-- **Never edit** `test/dist/`, `node_modules/`, or `package-lock.json` by hand.
+- **Never edit** `test/dist/`, `node_modules/`, or `pnpm-lock.yaml` by hand.
 - **Never hardcode a breakpoint value** — read it from `less/_var.less`.
 - 4 spaces, `lf` line endings, UTF-8, final newline (see `.editorconfig`).
 - Stylelint must pass — the build fails on error (`failOnError: true`).
@@ -79,10 +79,13 @@ This is enforced by `media-feature-range-notation: "prefix"` in `.stylelintrc`.
 
 ## Build
 
+The repository is managed with **pnpm**, never npm — see *Package manager* below.
+
 ```bash
-npm run dev      # unminified, source maps, → test/dist/*.css
-npm run watch    # same, watching
-npm run build    # production: PostCSS + autoprefixer + cssnano → test/dist/*-min.css
+pnpm i           # install, at the versions of pnpm-lock.yaml
+pnpm dev         # unminified, source maps, → test/dist/*.css
+pnpm watch       # same, watching
+pnpm build       # production: PostCSS + autoprefixer + cssnano → test/dist/*-min.css
 ```
 
 PostCSS only runs meaningfully on the production build. `output.clean` wipes
@@ -90,13 +93,39 @@ PostCSS only runs meaningfully on the production build. `output.clean` wipes
 rebuild in dev mode before opening `test/index.html`.
 
 Dependencies are pinned to **caret ranges**. Never reintroduce `"latest"`: it lets
-`package.json` and `package-lock.json` drift apart silently, which is what broke
-this build once already.
+`package.json` and the lockfile drift apart silently, which is what broke this
+build once already.
+
+## Package manager
+
+The tool is the one of the lockfile: `pnpm-lock.yaml`, so **pnpm**. A lockfile
+read by the wrong tool is ignored, and versions get resolved at today's date.
+
+- `"packageManager": "pnpm@x.y.z"` pins the pnpm version; pnpm switches to it on
+  its own, locally and in CI.
+- `devEngines.packageManager` makes `npm install`, `npm ci` and `npm publish`
+  stop before doing anything. It is **`devEngines`, not `engines`**: `engines` is
+  read on consumers' installs too, and would print `EBADENGINE` in every project
+  that installs boatless with npm. `devEngines` only applies to this repository.
+- What gets published is whitelisted by `files` in `package.json` (no
+  `.npmignore`: pnpm and npm do not read it the same way). Check with
+  `pnpm pack` before a release.
+- `publish.yml` builds and packs with pnpm, then uploads the tarball with
+  `npm publish` from outside the project: npm handles the OIDC exchange of
+  trusted publishing, and `devEngines` would refuse it inside the project.
+
+| npm | pnpm |
+|---|---|
+| `npm i` / `npm ci` | `pnpm i` / `pnpm install --frozen-lockfile` |
+| `npm run dev` | `pnpm dev` |
+| `npm i -D pkg` | `pnpm add -D pkg` |
+| `npm uninstall pkg` | `pnpm remove pkg` |
+| `npx tool` | `pnpm exec tool` |
 
 ## Definition of done for a style change
 
-1. `npm run dev` compiles with **no warnings and no Stylelint errors**.
-2. `npm run build` compiles clean too.
+1. `pnpm dev` compiles with **no warnings and no Stylelint errors**.
+2. `pnpm build` compiles clean too.
 3. If the change is meant to be a refactor, diff the compiled CSS against the
    previous output and confirm it is unchanged.
 4. Public API changes (new class, renamed variable) are added to `CHANGELOG.md`

@@ -59,7 +59,7 @@ Prefer the LESS partial or config area actually touched:
 | `forms` | `less/_forms.less` |
 | `typography` | `less/_typography.less` |
 | `demo` | `test/index.html`, `test/_dev/demo.less` |
-| `deps` | `package.json`, `package-lock.json` |
+| `deps` | `package.json`, `pnpm-lock.yaml` |
 | `webpack` | `webpack.config.mjs`, `postcss.config.js`, `.stylelintrc` |
 
 Omit the scope when the change is cross-cutting. Never invent a scope for a
