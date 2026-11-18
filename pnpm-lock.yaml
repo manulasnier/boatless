@@ -30,8 +30,8 @@ importers:
         specifier: ^8.5.25
         version: 8.5.32
       postcss-less:
-        specifier: ^6.0.0
-        version: 6.0.0(postcss@8.5.32)
+        specifier: ^7.1.1
+        version: 7.1.1(postcss@8.5.32)
       postcss-loader:
         specifier: ^8.2.1
         version: 8.2.1(postcss@8.5.32)(webpack@5.112.2)
@@ -913,6 +913,12 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       postcss: ^8.3.5
+
+  postcss-less@7.1.1:
+    resolution: {integrity: sha512-BUsJ7FKVpBM2K21vdV69Iyg+bh6jeMNiRLc+wtn2arsmBNieUzqXPi3crDVWtEDWFBKzY7vmqzOPyKagHf55uQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      postcss: ^8.5.32
 
   postcss-loader@8.2.1:
     resolution: {integrity: sha512-k98jtRzthjj3f76MYTs9JTpRqV1RaaMhEU0Lpw9OTmQZQdppg4B30VZ74BojuBHt3F4KyubHJoXCMUeM8Bqeow==}
@@ -2037,6 +2043,10 @@ snapshots:
       postcss: 8.5.32
 
   postcss-less@6.0.0(postcss@8.5.32):
+    dependencies:
+      postcss: 8.5.32
+
+  postcss-less@7.1.1(postcss@8.5.32):
     dependencies:
       postcss: 8.5.32
 
